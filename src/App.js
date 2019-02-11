@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
 import logo from './Horsey_Text5.png';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
 import { FaFacebookSquare, FaInstagram, FaSpotify, FaShoppingCart, FaYoutube } from 'react-icons/fa';
 
@@ -59,7 +60,7 @@ margin: 50px 0;
     width: 400px !important;
     height: 225px !important;
   }
-  
+
   @media only screen and (max-width: 400px) {
     width: 320px !important;
     height: 180px !important;
@@ -67,6 +68,11 @@ margin: 50px 0;
 `
 
 class App extends Component {
+
+  componentDidMount() {
+    initializeReactGA();
+  }
+
   render() {
     return (
       <div className="App">
@@ -97,6 +103,11 @@ class App extends Component {
       </div>
     );
   }
+}
+
+function initializeReactGA() {
+    ReactGA.initialize('UA-134233944-1');
+    ReactGA.pageview('/homepage');
 }
 
 export default App;
